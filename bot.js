@@ -10,7 +10,7 @@
  */
 
 var config = {
-    name: 'Blak Bot',
+    name: 'PokeMoon Bot',
     userid: function () {
         return toId(this.name);
     },
@@ -339,7 +339,9 @@ var commands = {
             "An annoying person",
             "A person with a salty personality",
             "A Coffee Addict",
-            "A Mediocre Player",
+            "An Amazing Battler",
+            "An Champion",
+            "An cool person",
         ];
 
         return function (target, room, user) {

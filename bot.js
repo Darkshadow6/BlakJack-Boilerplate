@@ -10,7 +10,7 @@
  */
 
 var config = {
-    name: 'PokeMoon Bot',
+    name: 'Neo Bot',
     userid: function () {
         return toId(this.name);
     },

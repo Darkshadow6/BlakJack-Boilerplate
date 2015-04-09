@@ -320,10 +320,10 @@ user.updateIdentity();
         }
     },
 
-    transferbuck: 'transfermoney',
-    transferbucks: 'transfermoney',
+    transferbuck: 'transferbucks',
+    transferbucks: 'transferbucks',
     transfermoney: function (target, room, user) {
-        if (!target) return this.parse('/help transfermoney');
+        if (!target) return this.parse('/help transferbucks');
         if (!this.canTalk()) return;
 
         if (target.indexOf(',') >= 0) {
@@ -341,22 +341,22 @@ user.updateIdentity();
         var userMoney = Core.stdin('money', user.userid);
         var targetMoney = Core.stdin('money', targetUser.userid);
 
-        if (parts[1] > Number(userMoney)) return this.sendReply('You cannot transfer more money than what you have.');
+        if (parts[1] > Number(userMoney)) return this.sendReply('You cannot transfer more bucks than what you have.');
 
         var b = 'bucks';
         var cleanedUp = parts[1].trim();
-        var transferMoney = Number(cleanedUp);
-        if (transferMoney === 1) b = 'buck';
+        var transferbucks = Number(cleanedUp);
+        if (transferbucks === 1) b = 'buck';
 
-        userMoney = Number(userMoney) - transferMoney;
-        targetMoney = Number(targetMoney) + transferMoney;
+        userMoney = Number(userMoney) - transferbucks;
+        targetMoney = Number(targetMoney) + transferbucks;
 
         Core.stdout('money', user.userid, userMoney, function () {
             Core.stdout('money', targetUser.userid, targetMoney);
         });
 
-        this.sendReply('You have successfully transferred ' + transferMoney + ' ' + b + ' to ' + targetUser.name + '. You now have ' + userMoney + ' bucks.');
-        targetUser.send(user.name + ' has transferred ' + transferMoney + ' ' + b + ' to you. You now have ' + targetMoney + ' bucks.');
+        this.sendReply('You have successfully transferred ' + transferbucks + ' ' + b + ' to ' + targetUser.name + '. You now have ' + userMoney + ' bucks.');
+        targetUser.send(user.name + ' has transferred ' + transferbucks + ' ' + b + ' to you. You now have ' + targetMoney + ' bucks.');
     },
 
     tell: function (target, room, user) {
